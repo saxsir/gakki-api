@@ -7,6 +7,10 @@ import (
 	"github.com/labstack/echo/middleware"
 )
 
+type Image struct {
+	URL string
+}
+
 func main() {
 	// Echo instance
 	e := echo.New()
@@ -16,6 +20,12 @@ func main() {
 	e.Use(middleware.Recover())
 
 	// Routes
+	e.GET("/", func(c echo.Context) error {
+		return c.JSON(http.StatusOK, []*Image{
+			&Image{URL: "aaa"},
+			&Image{URL: "bbb"},
+		})
+	})
 	e.GET("/ping", func(c echo.Context) error {
 		return c.String(http.StatusOK, "pong")
 	})
