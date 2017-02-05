@@ -10,3 +10,6 @@ deps: .git/hooks/prepare-commit-msg
 
 save:
 	dep ensure -update
+
+server:
+	go run main.go
